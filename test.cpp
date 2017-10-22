@@ -30,5 +30,29 @@ TEST(RENMINBI, LOWERTOUPPER_INTEGER_OK2)
 	cout << upper << endl;
 	EXPECT_EQ(upper, "壹拾元");
 }
+TEST(RENMINBI, LOWERTOUPPER_INTEGER_OK3)
+{
+	string lower = "10000";
+	string upper;
+	RenMinBi::lower_to_upper(lower, upper);
+	cout << upper << endl;
+	EXPECT_EQ(upper, "壹万元");
+}
+TEST(RENMINBI, LOWERTOUPPER_INTEGER_OK4)
+{
+	string lower = "100000000000";
+	string upper;
+	RenMinBi::lower_to_upper(lower, upper);
+	cout << upper << endl;
+	EXPECT_EQ(upper, "壹仟亿元");
+}
+TEST(RENMINBI, LOWERTOUPPER_INTEGER_OK5)
+{
+	string lower = "10000000";
+	string upper;
+	RenMinBi::lower_to_upper(lower, upper);
+	cout << upper << endl;
+	EXPECT_EQ(upper, "壹仟万元");
+}
 
 

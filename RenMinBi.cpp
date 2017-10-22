@@ -6,36 +6,6 @@
  ************************************************************************/
 #include "RenMinBi.h"
 namespace ren_min_bi {
-/*static const string DIGITAL[10] = {
-	"零",
-	"壹",
-	"贰",
-	"叁",
-	"肆",
-	"伍",
-	"陆",
-	"柒",
-	"捌",
-	"玖"
-};
-static const string UNIT_INTEGER[16] = {
-	"元",
-	"拾",
-	"佰",
-	"仟",
-	"万",
-	"拾",
-	"佰",
-	"仟",
-	"亿",
-	"拾",
-	"佰",
-	"仟",
-	"万",
-	"拾",
-	"佰",
-	"仟"
-};*/
 /*
  * @purpose:convert lower of renminbi to upper renminbi
  * */
@@ -53,12 +23,13 @@ void RenMinBi::lower_to_upper(const string &lower, string &upper)
 	}
 	for(i = 15;i >= 0;i--)
 	{
-		if(tmp[i] != -1)
+		if(-1 == tmp[i]) continue;
+		m = tmp[i];
+		if(m || 1 == size) upper += DIGITAL[m];
+		if(m || (i % 4 == 0)) 
 		{
-			m = tmp[i];
-			if(m || 1 == size) upper += DIGITAL[m];
+			if(size > 8 && i == 4) continue;
 			upper += UNIT_INTEGER[i];
-
 		}
 	}
 }
